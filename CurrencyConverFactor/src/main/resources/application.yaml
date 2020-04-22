@@ -1,0 +1,62 @@
+spring:
+ profiles:
+  active: dev
+  
+ application: 
+         name: simple
+ mvc:
+     view:
+      prefix: /
+      suffix: .html     
+         
+server:
+       port: 8081
+       servlet:
+        context-path: /ss
+          
+management :
+       server : 
+          port : 9001  
+  
+greeting: hai  
+---
+spring:
+  profiles: dev
+  h2:
+   console:
+     enabled: true
+     path: /h2
+     
+  datasource:
+   url: jdbc:h2:mem:myDb;DB_CLOSE_DELAY=-1
+   username: sa
+   password:
+        # driver-class-name: org.h2.Driver
+  jpa:
+   properties:
+     hibernate:
+       dialect: org.hibernate.dialect.H2Dialect
+       show_sql: false
+       ddl-auto: create-drop
+logging:
+ level:
+   root: ERROR
+   com.spring.microservices: DEBUG
+     
+eureka: 
+ instance:
+  instanceId: $(spring.application.name):$(random.int)
+  leaseRenewalIntervalInSeconds: 2
+  leaseExpirationDurationInSeconds: 5
+  preferIpAddress: true
+  metadata-map:
+      zone: zone_8761
+  
+ client: 
+   registerWithEureka: false
+   fetchRegistry: true
+   prefer-same-zone-eureka: true
+   serviceUrl:
+    defaultZone: http://localhost:8761/eureka
+   
+  

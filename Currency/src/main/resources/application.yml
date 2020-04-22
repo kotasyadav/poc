@@ -1,0 +1,21 @@
+server:
+  port: 9090
+  
+#spring:
+
+#  profiles:
+#    active: vault, git
+#  application:
+#    name: configserver
+#  main:
+#    allow-bean-definition-overriding: true
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#  endpoint:
+#    health:
+#      show-details: ALWAYS
+#      
